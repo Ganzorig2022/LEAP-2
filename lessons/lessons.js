@@ -53,8 +53,8 @@
 // console.log(read)
 
 // ===============================HTTP request========================
-const http = require('http')
-var fs = require('fs')
+// const http = require('http')
+// var fs = require('fs')
 
 // Hello World ugiig chrome dr hewleh
 // http
@@ -66,20 +66,30 @@ var fs = require('fs')
 //   .listen(8080)
 // console.log('Server runnning at http://localhost:8080/')
 
-const PORT = 8080
-const index = '/index.html'
-const profile = '/profile.html'
+// const PORT = 8080
+// const index = '/index.html'
+// const profile = '/profile.html'
 
-http
-  .createServer(function (request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/html' })
-    if (request.url === profile) {
-      response.write(fs.readFileSync('.' + profile))
-    } else {
-      response.write(fs.readFileSync('.' + index))
-    }
-    response.end()
-  })
-  .listen(PORT)
+// http
+//   .createServer(function (request, response) {
+//     response.writeHead(200, { 'Content-Type': 'text/html' })
+//     if (request.url === profile) {
+//       response.write(fs.readFileSync('.' + profile))
+//     } else {
+//       response.write(fs.readFileSync('.' + index))
+//     }
+//     response.end()
+//   })
+//   .listen(PORT)
 
-console.log(`Server runnning at http://localhost:${PORT}/`)
+// console.log(`Server runnning at http://localhost:${PORT}/`)
+
+
+
+// ===============================lesson-3========================
+////////////////////////////////NPM MODULE////////////////////////
+
+//node - v
+//node -help
+//node argv.js -t "hi args"
+//"hiA args"
