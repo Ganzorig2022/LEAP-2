@@ -155,32 +155,195 @@
 //   rl.close()
 // })
 
-///////////////FUNDAMENTALS of FUNCTIONAL PROGRAMMING
+///////////////FUNDAMENTALS of FUNCTIONAL PROGRAMMING========================
 
 //function stamement
-function sum1(x, y) {
-  return x + y
+// function sum1(x, y) {
+//   return x + y
+// }
+// console.log(sum1(5, 2))
+
+// //function expression
+// const sum2 = (x, y) => {
+//   return x + y
+// }
+
+// console.log(sum2(5, 2))
+
+// //function arrow
+
+// const sayMyName = (name) => 'hello ' + name
+
+// console.log(sayMyName('Ganzo'))
+
+// const double = (num) => num * 2
+
+// console.log(double(2))
+
+// const getAccess = (bool) => bool ? true : false
+
+// console.log(getAccess(true));
+// console.log(getAccess(false));
+
+// const a = [1, 2, 3, 4]
+
+// const b = a.map((el) => el * 2)
+
+// console.log(b)
+
+// const birthYear = [1994, 1997, 2003, 1993, 2001]
+
+// const nas = birthYear.map((on) => 202
+
+// console.lo
+
+// tegsh toog 2-oor, sondgoig 3-aar vrjvvleh
+// const arr = [12, 23
+//   if (value % 2 ===
+//     return value * 2
+//   } else {
+//     re
+// const person = [
+//   { id: 1, Name: 'Dorj', age: 19 },
+//   { id: 2, Name: 'Bold', age: 13 },
+//   { id: 3, Name: 'Baldan', age: 15 },
+//   { id: 4, Name: 'Tsetsgee', age: 20 },
+//   { id: 5, Name: 'Dulmaa', age: 23 },
+// ]
+
+// const adults = person.filter((person) => person.age >= 18)
+
+// console.log(adults)
+
+// const arr = [3, -1, 8, 0, 2]
+
+// const reduced = arr.reduce((acc, el) => (acc += el))
+
+// console.log(reduced)
+
+// const nestedArray = [1, 2, 3, 4, [5, 6, 7]]
+// const flat = nestedArray.flat()
+
+// console.log(flat)
+
+// const arr1 = [1, 2, [3], [4, 5], 6, []]
+
+// const flatMapArr = arr1.flatMap((num) => num)
+
+// console.log(flatMapArr)
+
+// const arr1 = ['Cecilie', 'Lone']
+// const arr2 = ['Emil', 'Tobias', 'Linus']
+// const children = arr1.concat(arr2)
+// console.log(children)
+
+// const arr1 = ['Cecilie', 'Lone']
+
+// const findIndexArr = arr1.findIndex((el) => el === 'Cecilie')
+
+// console.log(findIndexArr)
+
+// const findEl = arr1.find((el) => el === 'Lone')
+
+// console.log(findEl)
+
+// const ages = [3, 10, 18, 20]
+
+// const findSome = ages.some((el) => el > 21)
+
+// console.log(findSome)
+
+// const findEvery = ages.every((el) => el > 5)
+
+// console.log(findEvery)
+
+//=============================LESSON-5====================================
+//===============================1. IMPURE, PURE FUNCTION ============================
+// const urjwer = (x, y, z) => x * y * z
+// console.log(urjwer(2, 5, 4))
+
+// const discount = (price, discount) => price * discount
+// console.log(discount(1500, 0.1))
+
+// //=========================== 2. CURRYING FUNCTION
+// const discount1 = (price) => (discount) => price * discount
+
+// console.log(discount1(1500)(0.1))
+
+// const chocolates = [
+//   { dark: true, flavour: 'strawberry' },
+//   { dark: false, flavour: 'strawberry' },
+//   { dark: false, flavour: 'almond' },
+//   { dark: true, flavour: 'almond' },
+//   { dark: false, flavour: 'lemon' },
+// ]
+
+// const checkProperty = (key, value) => {
+//   return (choco) => {
+//     return choco[key] === value
+//   }
+// }
+
+// const darkChocolates = chocolates.filter(checkProperty('dark', true))
+// const almondChocolates = chocolates.filter(checkProperty('flavour', 'almond'))
+
+// console.log(darkChocolates)
+// console.log(almondChocolates)
+
+//===============================3. MUTABLE,IMMUTABLE FUNCTION============================
+
+//=============================LESSON-6====================================
+//============================1. RECURSIVE
+// const readline = require('readline')
+
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// })
+
+// rl.question('ta utgaa oruulna uu', (input) => {
+//   let sum = 0
+
+//   for (let i = 0; i <= input; i++) {
+//     sum += i
+//   }
+//   console.log('summary is: ', sum)
+
+//   rl.close()
+// })
+// const factorial1 = (x) => (x === 0 ? 0 : x + factorial(x - 1))
+
+// const factorial = (x) => {
+//   if (x === 0) return 1
+//   return x * factorial(x - 1)
+// }
+
+// console.log(factorial(4))
+
+//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+// const fibonacci = (x) => {
+//   if (x < 2) return 1
+//   return fibonacci(x - 1) + fibonacci(x - 2)
+// }
+
+// console.log(fibonacci(5))
+
+// const reverse = (str) => {
+//   if (str.length <= 1) return str
+//   return str.charAt(str.length - 1) + reverse(str.substring(0, str.length - 1))
+// }
+
+// console.log(reverse('hello'))
+
+function flatten(items) {
+  const flat = []
+
+  items.forEach((item) => {
+    if (Array.isArray(item)) return flat.push(...flatten(item))
+    return flat.push(item)
+  })
+
+  return flat
 }
-console.log(sum1(5, 2))
 
-//function expression
-const sum2 = (x, y) => {
-  return x + y
-}
-
-console.log(sum2(5, 2))
-
-//function arrow
-
-const sayMyName = (name) => 'hello ' + name
-
-console.log(sayMyName('Ganzo'))
-
-const double = (num) => num * 2
-
-console.log(double(2))
-
-const getAccess = (bool) => bool ? true : false
-
-console.log(getAccess(true));
-console.log(getAccess(false));
+console.log(flatten([1, [2, [4, 3], 5], 3]))
