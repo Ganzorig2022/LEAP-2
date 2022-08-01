@@ -111,7 +111,7 @@
 //   color = '',
 //   text = 'hellll'
 
-// let args = process.argv.slice(2)
+// let args = process.argv.slice(2) //YARGS hiiwel hurdan hiine CHALK-iig
 // let str = args.join('')
 
 // if (str.includes('-bg')) {
@@ -157,20 +157,20 @@
 
 ///////////////FUNDAMENTALS of FUNCTIONAL PROGRAMMING========================
 
-//function stamement
+//===========function stamement
 // function sum1(x, y) {
 //   return x + y
 // }
 // console.log(sum1(5, 2))
 
-// //function expression
+// //========function expression
 // const sum2 = (x, y) => {
 //   return x + y
 // }
 
 // console.log(sum2(5, 2))
 
-// //function arrow
+// //=========function arrow
 
 // const sayMyName = (name) => 'hello ' + name
 
@@ -185,6 +185,11 @@
 // console.log(getAccess(true));
 // console.log(getAccess(false));
 
+//=========FUNCTION AS A ARGUMENT
+// isEven = (num => num % 2 === 0)
+// result = [1,2,3,4].filter(isEven)
+
+// ==========HIGH ORDER FUNCTION
 // const a = [1, 2, 3, 4]
 
 // const b = a.map((el) => el * 2)
@@ -212,7 +217,6 @@
 // ]
 
 // const adults = person.filter((person) => person.age >= 18)
-
 // console.log(adults)
 
 // const arr = [3, -1, 8, 0, 2]
@@ -259,13 +263,15 @@
 
 //=============================LESSON-5====================================
 //===============================1. IMPURE, PURE FUNCTION ============================
+// pure function is independent function
+// impure is dependent from outside variables, or arguments
 // const urjwer = (x, y, z) => x * y * z
 // console.log(urjwer(2, 5, 4))
 
 // const discount = (price, discount) => price * discount
 // console.log(discount(1500, 0.1))
 
-// //=========================== 2. CURRYING FUNCTION
+// //=========================== 2. CURRYING FUNCTION================================
 // const discount1 = (price) => (discount) => price * discount
 
 // console.log(discount1(1500)(0.1))
@@ -291,6 +297,10 @@
 // console.log(almondChocolates)
 
 //===============================3. MUTABLE,IMMUTABLE FUNCTION============================
+// MUTABLE
+// const arr  = [1,2,3]
+// arr.push(4)
+// arr is [1,2,3,4]
 
 //=============================LESSON-6====================================
 //============================1. RECURSIVE
@@ -334,16 +344,233 @@
 // }
 
 // console.log(reverse('hello'))
+// const reverse = (str) => {
+//   let len = str.length - 1
+//   if (str.length === 1) return str
+//   return str[len] + reverse(str.slice(0, len))
+// }
 
-function flatten(items) {
-  const flat = []
+// console.log(reverse('hello'))
 
-  items.forEach((item) => {
-    if (Array.isArray(item)) return flat.push(...flatten(item))
-    return flat.push(item)
-  })
+// function flatten(items) {
+//   const flat = []
 
-  return flat
+//   items.forEach((item) => {
+//     if (Array.isArray(item)) return flat.push(...flatten(item))
+//     return flat.push(item)
+//   })
+
+//   return flat
+// }
+
+// console.log(flatten([1, [2, [4, 3], 5], 3]))
+
+// function copyMachine(arr, num) {
+//   if (arr.length === num) return arr
+//   return [...arr, copyMachine(arr, num - 1)]
+// }
+
+// console.log(copyMachine([true, false, true], 2))
+
+///WARM UP
+
+// const makePlusFunction = (a) => (b) => a + b
+
+// const plusFive = makePlusFunction(5)
+// const plusTen = makePlusFunction(10)
+
+// console.log(plusFive(plusTen(0)))
+
+////////////WHERE IS WALDO GAME/////////
+// function whereisWaldo(arr, str) {
+//   let newArr = []
+//   let a, b
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].indexOf(str) > 0) {
+//       a = i
+//     } else {
+//       b = i
+//     }
+//   }
+//   return [a, b]
+// }
+
+// console.log(
+//   whereisWaldo([
+//     ['A', 'A', 'A'],
+//     ['A', 'A', 'A'],
+//     ['A', 'B', 'A'],
+//   ], "B"),
+// )
+// console.log(
+//   whereisWaldo([
+//     ['O', 'O', 'O', 'O'],
+//     ['O', 'O', 'O', 'O'],
+//     ['O', 'O', 'O', 'O'],
+//     ['O', 'O', 'O', 'O'],
+//     ['P', 'O', 'O', 'O'],
+//     ['O', 'O', 'O', 'O'],
+//   ], "P"),
+// )
+
+//======================LESSON-6_API=======================
+// const request = require('request')
+// const readline = require('readline')
+
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// })
+
+// rl.question('ta utgaa oruulna uu: ', (input) => {
+//   request(
+//     `https://api.mapbox.com/geocoding/v5/mapbox.places/${input}.json?access_token=pk.eyJ1IjoibXVua2h6dWwxIiwiYSI6ImNrdWk2czI5cTFhZDIyd3Q5OXhvcWIwNTIifQ.o65kzaqtL2jRj0NY7NBRcQ`,
+
+//     (error, response, body) => {
+//       const data = JSON.parse(body)
+//       const coord = data.features[0].center
+//       const [longtitude, latitude] = coord
+//       const cityName = data.features[0].place_name
+//       console.log(`${cityName} hotiin coordinat ni: ${coord}`) // Print the HTML for the Google homepage.
+//       console.log(longtitude, latitude) // Print the HTML for the Google homepage.
+//       const options = {
+//         method: 'GET',
+//         url: 'https://weatherbit-v1-mashape.p.rapidapi.com/current',
+//         qs: { lon: longtitude, lat: latitude },
+//         headers: {
+//           'x-rapidapi-host': 'weatherbit-v1-mashape.p.rapidapi.com',
+//           'x-rapidapi-key':
+//             '063f6ebe6amsh16b13e9dec1de5ap16463bjsnd9f5cb9f6ccc',
+//           useQueryString: true,
+//         },
+//       }
+//       request(options, (error, response, body) => {
+//         const weatherData = JSON.parse(body)
+//         console.log(weatherData)
+//         console.log(
+//           `Today snow falling possibility is: ${weatherData.data[0].snow}\n Average temperature is: ${weatherData.data[0].temp}`,
+//         )
+//       })
+//     },
+//   ),
+//     rl.close()
+// })
+
+//======================LESSON-7_ASYNC AWAIT=======================
+// const willIGetNewPhone = () =>
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       let isMomHappy = Math.round(Math.random())
+//       if (isMomHappy) {
+//         let phone = {
+//           brand: 'iPhone',
+//           color: 'black',
+//         }
+//         resolve(phone) // fulfilled
+//       }
+//       return reject('mom is not happy') // reject
+//     }, 1000)
+//   })
+
+// // THEN CATCH METHOD
+
+// const getPhoneCase = () =>
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       let momHasMoney = Math.round(Math.random())
+//       if (momHasMoney)
+//         return resolve('za za mai ene mongiig awaad utsaa Case-ee awaarai')
+//       return reject('eejid ni mongo alga oo')
+//     }, 2000)
+//   })
+// const caseCallBack = async () => {
+//   try {
+//     const responseCase = await getPhoneCase()
+//     console.log(responseCase)
+//   } catch (error) {
+//     console.log('casenii aldaa: ', error)
+//   }
+// }
+// // ASYNC AWAIT                         //HANDLER FUNCTION
+// const askMom = async (call) => {
+//   try {
+//     const response = await willIGetNewPhone()
+//     console.log('Eej nadad ', response, 'utas awch ogloo.')
+//     call()
+//   } catch (error) {
+//     console.log('utasnii aldaa: ', error)
+//   }
+// }
+
+// console.log('asking: ', askMom(caseCallBack))
+
+// const checkData = (data) =>
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (!isNaN(data)) return resolve('data is Nan')
+//       return reject('error')
+//     }, 1000)
+//   })
+
+// const dataEvaluation = async () => {
+//   try {
+//     const response = await checkData('b')
+//     console.log(response)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+// console.log(dataEvaluation())
+
+////////////////MISSION//////////////
+// const oddNumber = (data) =>
+//   new Promise((resolve, reject) => {
+//     let time = 0
+//     data % 2 !== 0 ? (time = 1000) : (time = 2000)
+//     setTimeout(() => {
+//       if (data % 2 !== 0) {
+//         resolve('data is odd number')
+//       } else {
+//         reject('data is even number')
+//       }
+//     }, time)
+//   })
+
+// const checkOdd = async () => {
+//   try {
+//     const response = await oddNumber(14)
+//     console.log(response)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+// console.log(checkOdd())
+
+////////////////MISSION//////////////
+const request = require('request')
+const axios = require('axios')
+const readline = require('readline')
+const { resourceLimits } = require('worker_threads')
+
+const getPoem = async () => {
+  try {
+    const response = await axios.get(
+      'https://www.poemist.com/api/v1/randompoems',
+    )
+    const poem = response.data[0].url
+    poem.data.forEach(item => {
+      arr.push(axios.get)
+    })
+    const row = poem.data.split('\n')
+    const newArr = []
+    row.forEach((el) => {
+      if (el.includes('Total read')) {
+        newArr.push(el)
+      }
+      console.log(newArr)
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
-
-console.log(flatten([1, [2, [4, 3], 5], 3]))
+console.log(getPoem())
