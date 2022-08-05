@@ -547,30 +547,191 @@
 // console.log(checkOdd())
 
 ////////////////MISSION//////////////
-const request = require('request')
-const axios = require('axios')
-const readline = require('readline')
-const { resourceLimits } = require('worker_threads')
+// const request = require('request')
+// const axios = require('axios')
+// const readline = require('readline')
+// const { resourceLimits } = require('worker_threads')
 
-const getPoem = async () => {
-  try {
-    const response = await axios.get(
-      'https://www.poemist.com/api/v1/randompoems',
-    )
-    const poem = response.data[0].url
-    poem.data.forEach(item => {
-      arr.push(axios.get)
-    })
-    const row = poem.data.split('\n')
-    const newArr = []
-    row.forEach((el) => {
-      if (el.includes('Total read')) {
-        newArr.push(el)
-      }
-      console.log(newArr)
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
-console.log(getPoem())
+// const getPoem = async () => {
+//   try {
+//     const response = await axios.get(
+//       'https://www.poemist.com/api/v1/randompoems',
+//     )
+//     const poem = response.data[0].url
+//     poem.data.forEach(item => {
+//       arr.push(axios.get)
+//     })
+//     const row = poem.data.split('\n')
+//     const newArr = []
+//     row.forEach((el) => {
+//       if (el.includes('Total read')) {
+//         newArr.push(el)
+//       }
+//       console.log(newArr)
+//     })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+// console.log(getPoem())
+
+//==========mission
+// const users = [
+//   { id: 11, name: "Bat", age: 23, group: "editor" },
+//   { id: 47, name: "Bold", age: 28, group: "admin" },
+//   { id: 85, name: "Tulga", age: 34, group: "editor" },
+//   { id: 97, name: "Suren", age: 28, group: "admin" },
+//   { id: 85, name: "Tulga", age: 34, group: "editor" },
+//   { id: 97, name: "Suren", age: 28, group: "admin" },
+//   { id: 97, name: "Suren", age: 28, group: "admin" },
+//   { id: 97, name: "Suren", age: 28, group: "admin" },
+// ];
+// let editorC = 0, adminC = 0;
+// const countPeople = (people) => {
+//     people.map(person => person.group == "editor" ? editorC++ : adminC++);
+//     return {admin: adminC, editor: editorC}
+//     return people.reduce((accum, value) => {
+//         if (value.group == "editor") {
+//             accum.editor++
+//         }
+//         else {
+//             accum.admin++
+//         }
+//         return accum
+//     }, {admin: 0, editor: 0})
+// }
+// console.log(countPeople(users))
+
+//==================================LESSON-8 FIRESTORE FIREBASE==========================
+
+//1. npm init
+//2. npm install firebase
+// 3. package.json dr "type":"module" gej nemj ogno.
+
+// Import the functions you need from the SDKs you need
+//import { initializeApp } from "firebase/app";
+// import {
+//   getFirestore,
+//   collection,
+//   addDoc,
+//   getDocs,
+//   doc,
+//   query,
+//   where,
+// } from "firebase/firestore";
+// import { getStorage, ref } from "firebase/storage";
+
+//npm i firebase-admin
+// import { cert, initializeApp } from "firebase-admin/app";
+
+// import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBdM1NyuT1SLtyWOUMxpQLr5p0JSzXZWfg",
+//   authDomain: "fir-lesson-d5a54.firebaseapp.com",
+//   projectId: "fir-lesson-d5a54",
+//   storageBucket: "fir-lesson-d5a54.appspot.com",
+//   messagingSenderId: "231138977700",
+//   appId: "1:231138977700:web:a05b6203dbeef21703c331",
+//   measurementId: "G-VZYWJBKBGC",
+// };
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// // const analytics = getAnalytics(app);
+// const db = getFirestore(app);
+
+// try {
+//   const docRef = await addDoc(collection(db, "users"), {
+//     first: "Amgalan",
+//     last: "Batnyamsuren",
+//     age: 23
+//   });
+
+//   console.log("Document written with ID: ", docRef.id);
+// } catch (e) {
+//   console.error("Error adding document: ", e);
+// }
+
+// const ref = collection(db, "users");
+// const queryData = await getDocs(ref);
+
+// // queryData.forEach((doc) => {
+// //   console.log(doc.data());
+// // }); //{ age: 23, last: 'Batnyamsuren', first: 'Amgalan' }
+
+// const q = query(ref, where("first", "==", "Amgalan"));
+
+// const querySnapshot = await getDocs(q);
+// querySnapshot.forEach((doc) => {
+//   console.log(doc.data());
+// });
+
+//=================1. Zurag upload===============
+//1. Firebase -> Project Settings -> Service Accuounts -> Generate Key - JSON file download hged foldertoo hadgalana.
+//2. Storage dotor zurag orno.
+//3. npm i uuid
+//4. localhost dre darhad zuragnii link irne.
+//5. linken dr darahad zurag ni neegdene.
+
+// const { getStorage, ref } = require("firebase-admin/storage");
+// const { initializeApp, cert } = require("firebase-admin/app");
+// const { v4: uuid_v4 } = require("uuid");
+// const serviceAccount = require("./adminKey.json");
+// const http = require("http");
+
+// initializeApp({
+//   credential: cert(serviceAccount),
+//   storageBucket: "gs://fir-lesson-d5a54.appspot.com/", //firebase-.storage dotroos huulj awna.
+// });
+
+// const bucket = getStorage().bucket();
+// const filePath = "./logo_white.png";
+
+// const upload = async (filePath) => {
+//   let uuid = uuid_v4();          //generates unique ID
+//   console.log(uuid);             // iim "66132806-7142-4bdb-b05e-1caf1bbf984b" URL irne.
+//   let data =await bucket.upload(filePath, {
+//     metadata: {
+//       metadata: {
+//         FirebaseFirestorageDownloadTokens: uuid,
+//       },
+//     },
+//   });
+//   let file = data[0]
+//   return `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${file.name}?alt=media&token=${uuid}`;
+// };
+// console.log(upload(filePath));
+
+// //================2. Zurgaa tataj awnaa==============
+// const port = 8080;
+// http
+//   .createServer(async (req, res) => {
+//     try {
+//       let url = await upload(filePath);
+//       res.writeHead(200, { 'Content-Type': 'text/html' })
+//       res.write(`<a href=${url}>Click me</a>`)
+//       console.log(url);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   })
+//   .listen(port);
+
+// console.log(`Server runnning at http://localhost:${port}/`);
+
+//==================================LESSON - 9. GITHUB=================================
+//1. Create New Repository in REMOTE
+//2. Github projects (TRELLO-toi adilhan)
+//=====…or create a new repository on the command line
+//echo "# leap2-test" >> README.md
+//git init
+//git add README.md
+//git commit -m "first commit"
+//git branch -M main
+//git remote add origin https://github.com/Ganzorig2022/leap2-test.git
+//git push -u origin main
